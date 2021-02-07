@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "outDir": "./build",
+    "allowJs": true,
+    "jsx": "react",
+    "target": "es5",
+    "lib": [
+      "es5",
+      "es2015",
+      "dom",
+      "scripthost",
+      "esnext"
+    ],
+    "skipLibCheck": false,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "noUnusedLocals": false,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "sourceMap": true,
+    "isolatedModules": true
+  },
+  "include": [
+    "./src/*",
+    "global.d.ts"
+  ]
+}
