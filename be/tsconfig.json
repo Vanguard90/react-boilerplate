@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "preserveConstEnums": true,
+        "target": "es5",
+        "module": "commonjs",
+        "outDir": "dist",
+        "sourceMap": true,
+        "types": ["node"],
+        "allowJs": true,
+        "moduleResolution": "node",
+        "lib": ["es2015"],
+        "rootDir": "./",
+        "esModuleInterop": true,
+    },
+    "exclude": ["node_modules", ".vscode"]
+}
