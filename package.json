@@ -1,0 +1,24 @@
+{
+  "name": "react-boilerplate",
+  "version": "1.0.0",
+  "description": "React + Node.js + Typescript boilerplate for kickstarting projects",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "cd be/ && docker-compose up -d && cd ../fe && npm start",
+    "stop": "cd be/ && docker-compose down"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vanguard90/react-boilerplate.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vanguard90/react-boilerplate/issues"
+  },
+  "homepage": "https://github.com/Vanguard90/react-boilerplate#readme"
+}
