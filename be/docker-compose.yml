@@ -1,6 +1,7 @@
-version: "3"
+version: "3.8" # 19.03.0+
 services:
   app:
+    image: fermium-alpine3.11
     container_name: test-node-dev
     restart: always
     build: .
