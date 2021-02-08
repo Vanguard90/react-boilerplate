@@ -13,9 +13,9 @@ const HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
   inject: "body",
 });
 
-const copyWebpackPluginConfig = new CopyPlugin([
+const copyWebpackPluginConfig = new CopyPlugin({patterns: [
   { from: "./public", to: "./" },
-]);
+]});
 
 const processPluginConfig = new webpack.DefinePlugin({
   // Make the environmental variables available throughout the app
@@ -24,11 +24,14 @@ const processPluginConfig = new webpack.DefinePlugin({
   },
 });
 
-module.exports = (env, options) => {
-  console.log(`--- Webpack is running in ${options.mode} mode ---`);
-  const selectedModeIsProd = options.mode === "production" ? true : false;
+module.exports = () => {
+  console.log(`--- Webpack is running in ${process.env.NODE_ENV} mode ---`);
+  const selectedModeIsProd = process.env.NODE_ENV !== "production" ? true : false;
   return {
+    mode: process.env.NODE_ENV !== "production" ? "development" : "production",
     devServer: {
+      inline: true,
+      open: true,
       host: "localhost",
       port: "8080",
       headers: {
@@ -42,7 +45,9 @@ module.exports = (env, options) => {
         {
           test: /\.(t|j)sx?$/,
           exclude: /node_modules/,
-          loaders: ["awesome-typescript-loader"],
+          use: {
+            loader: "awesome-typescript-loader"
+          },
         },
         {
           test: /\.scss$|\.css$/,
@@ -81,7 +86,7 @@ module.exports = (env, options) => {
         },
       ],
     },
-    devtool: selectedModeIsProd ? "" : "source-map",
+    devtool: selectedModeIsProd ? false : "source-map",
     resolve: {
       extensions: [".ts", ".tsx", ".js", ".jsx"],
     },
@@ -95,12 +100,18 @@ module.exports = (env, options) => {
       : [HTMLWebpackPluginConfig, copyWebpackPluginConfig, processPluginConfig],
     output: {
       filename: "[name].[contenthash].js",
-      // chunkFilename: '[name].bundle.js',
+      chunkFilename: "[name].[contenthash].chunk.js",
       path: path.join(__dirname, "/build"),
     },
     optimization: {
+      moduleIds: "named",
+      chunkIds: "named",
+      minimizer: [
+        new TerserPlugin({
+          extractComments: false,
+        }),
+      ],
       minimize: true,
-      minimizer: [new TerserPlugin()],
       runtimeChunk: "single",
       splitChunks: {
         chunks: "all",
