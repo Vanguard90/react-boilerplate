@@ -40,5 +40,6 @@ module.exports = {
     "react/no-unescaped-entities": "off",
     "react/display-name": "warn",
     "react-hooks/exhaustive-deps": "off",
+    "@typescript-eslint/no-explicit-any": "off",
   },
 };

@@ -3,8 +3,8 @@ import { ITestInterface } from "./service-interface";
 const BASE_URL = "http://localhost:5000";
 
 export default class RepositoryService {
-  static async getVideo(videoId: number): Promise<any> {
-    const result: ITestInterface = await fetch(`${BASE_URL}/${videoId}`)
+  static async getVideo(testId: number): Promise<any> {
+    const result: ITestInterface = await fetch(`${BASE_URL}/test/${testId}`)
       .then(response => {
         return response.json();
       })
