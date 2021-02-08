@@ -1,10 +1,10 @@
 version: "3"
 services:
   app:
-    container_name: streambledl-node-dev
+    container_name: test-node-dev
     restart: always
     build: .
     ports:
       - "5000:5000"
     volumes:
-      - ../../:/src
+      - ./:/src
