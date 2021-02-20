@@ -1,5 +1,5 @@
 {
-  "name": "react-boilerplate",
+  "name": "react-node-boilerplate",
   "version": "1.0.0",
   "description": "React + Node.js + Typescript boilerplate for kickstarting projects",
   "main": "index.js",
